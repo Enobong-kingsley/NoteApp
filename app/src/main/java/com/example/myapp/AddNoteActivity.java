@@ -1,15 +1,23 @@
 package com.example.myapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class AddNoteActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.glory.notetakingapproomdb.EXTRA_TITLE";
@@ -19,6 +27,8 @@ public class AddNoteActivity extends AppCompatActivity {
     private EditText editTextTitle;
     private EditText editTextDescription;
     private NumberPicker numberPickerPriority;
+    private EditText mDateEditText;
+    private EditText mTimeEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +45,34 @@ public class AddNoteActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         setTitle("Add Note");
 
+//        mDateEditText = findViewById(R.id.newTodoDateEditText);
+//        mTimeEditText = findViewById(R.id.newTodoTimeEditText);
+//
+//        mDateEditText.setOnClickListener(new View.OnClickListener(){
+//
+//            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @Override
+//            public void onClick(View v) {
+//                final Calendar cldr = Calendar.getInstance();
+//                int day = cldr.get(Calendar.DAY_OF_MONTH);
+//                int month = cldr.get(Calendar.MONTH);
+//                int year = cldr.get(Calendar.YEAR);
+//
+//                DatePicker picker = new DatePickerDialog(MainActivity.this,
+//                        new DatePickerDialog.OnDateSetListener(){
+//
+//                            @Override
+//                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                                mDateEditText.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+//
+//                            }
+//                        }, year, month, day);
+//                picker.show();
+//            }
+//        });
 
     }
+
 
     public void saveNote(){
         String title = editTextTitle.getText().toString();
@@ -76,4 +112,5 @@ public class AddNoteActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
